@@ -1,4 +1,4 @@
-답점너 프로젝트 Front_End (송민규 , 강솔미)
+답점너 프로젝트 Front_End By (송민규 , 강솔미)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
