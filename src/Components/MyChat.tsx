@@ -7,7 +7,7 @@ type chatProps = {
 	message: string;
 };
 
-function MyChat({ message }: chatProps) {
+const MyChat = ({ message }: chatProps) => {
 	return (
 		<MessageBox>
 			<img alt='msg_before' src={myMsgBefore} />
@@ -15,7 +15,7 @@ function MyChat({ message }: chatProps) {
 			<img alt='msg_after' src={myMsgAfter} />
 		</MessageBox>
 	);
-}
+};
 
 export default MyChat;
 

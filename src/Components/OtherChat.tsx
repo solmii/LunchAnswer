@@ -11,7 +11,7 @@ type chatProps = {
 	img?: string; // 결과창에서 사용할 image
 };
 
-function OtherChat({ message, isMain, img }: chatProps) {
+const OtherChat = ({ message, isMain, img }: chatProps) => {
 	return (
 		<MessageBox>
 			<img alt='msg_before' src={isMain ? msgBeforeMain : msgBefore} />
@@ -19,7 +19,7 @@ function OtherChat({ message, isMain, img }: chatProps) {
 			<img alt='msg_after' src={isMain ? msgAfterMain : msgAfter} />
 		</MessageBox>
 	);
-}
+};
 
 export default OtherChat;
 

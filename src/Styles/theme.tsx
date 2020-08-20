@@ -1,12 +1,18 @@
 import { css } from 'styled-components';
 
 const ThemeColor = {
-	primary: '#f9582d',
+	mainOrange: '#f9582d',
 	mainYellow: '#fccb05',
 	lightGray: '#e6e6e6',
 	btnShadowGray: '#c9c9c9',
 	btnShadowYellow: '#fcb305',
 	progressGray: '#666666',
+};
+
+const ThemeFont = {
+	questionFont: '"yg-jalnan", sans-serif',
+	mainFontRegular: '"S-CoreDream-4Regular", sans-serif',
+	mainFontBold: '"S-CoreDream-6Bold", sans-serif',
 };
 
 const MessageBox = css`
@@ -24,6 +30,7 @@ const MessageBox = css`
 
 const theme = {
 	...ThemeColor,
+	...ThemeFont,
 	MessageBox,
 };
 
