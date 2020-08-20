@@ -1,6 +1,12 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  /* font-family 정의 */
+  @font-face {font-family: 'S-CoreDream-2ExtraLight';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');font-weight: normal;font-style: normal;};
+  @font-face {font-family: 'S-CoreDream-4Regular';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');font-weight: normal;font-style: normal;};
+  @font-face {font-family: 'S-CoreDream-6Bold';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');font-weight: normal;font-style: normal;};
+  @font-face {font-family: 'yg-jalnan';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');font-weight: normal;font-style: normal;};
+  
   html,
   body,
   div,
@@ -90,6 +96,11 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
     box-sizing: border-box;
   }
+
+  body{
+    font-family: "S-CoreDream-2ExtraLight", sans-serif;
+  }
+
   article,
   aside,
   details,
