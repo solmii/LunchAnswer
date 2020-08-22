@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export const SplashLogo = () => {
+const SplashLogo = () => {
   return (
     <SplashLogoBox>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 886.52 514.7">
@@ -62,12 +62,12 @@ const SplashLogoBox = styled.div`
   width: calc(100% - 94px);
 
   .cls-1 {
-    fill: #fccb05;
+    fill: ${({ theme }) => theme.mainYellow};
   }
   .cls-2,
   .cls-4,
   .cls-6 {
-    fill: #fff;
+    fill: white;
   }
   .cls-3 {
     font-size: 60.05px;
