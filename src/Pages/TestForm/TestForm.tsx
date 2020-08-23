@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import MyChat from 'Components/MyChat';
 import OtherChat from 'Components/OtherChat';
 import CategoryButtonForm from './CategoryButtonForm';
-import { questionList, answerList, categoryList, categoryChatList } from './testData';
+import { questionList, answerList, categoryChatList } from './testData';
 
 const TestForm = () => {
 	const [mouseAction, setMouseAction] = useState<boolean>(true);
@@ -41,14 +41,6 @@ const TestForm = () => {
 		increaseProgress();
 	};
 
-	useEffect(() => {
-		console.log('chatList : ', chatList);
-	}, [chatList]);
-
-	useEffect(() => {
-		console.log('userResult : ', userResult);
-	}, [userResult]);
-
 	return (
 		<TestSection>
 			<QuestionForm>
@@ -58,16 +50,16 @@ const TestForm = () => {
 
 			<ChatForm questionCount={questionCount}>
 				<ul>
-					<li id='square' class='fadeInLeft animated'>
-						<OtherChat message={'종류는 뭘로 할래?'} />
+					<li id='square' className='fadeInLeft animated'>
+						<OtherChat>종류는 뭘로 할래?</OtherChat>
 					</li>
 					{chatList.map((message) => (
 						<>
 							<li>
-								<MyChat message={message[0]} />
+								<MyChat>{message[0]}</MyChat>
 							</li>
-							<li id='square' class='fadeInLeft animated'>
-								<OtherChat message={message[1]} />
+							<li id='square' className='fadeInLeft animated'>
+								<OtherChat>{message[1]}</OtherChat>
 							</li>
 						</>
 					))}
@@ -100,6 +92,7 @@ const TestForm = () => {
 
 export default TestForm;
 
+// 가로로 너무 꽉차게 나와서 임시로 가로 크기 지정 해뒀습니다!
 const TestSection = styled.section`
 	width: 50%;
 	margin: 0 auto;
@@ -168,6 +161,7 @@ const ButtonForm = styled.div`
 	}
 `;
 
+// 임시 버튼
 const Test = styled.button`
 	width: 100%;
 	padding: 20px;
