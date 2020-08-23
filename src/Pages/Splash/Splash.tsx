@@ -18,6 +18,9 @@ const Splash = ({ history }) => {
 export default Splash;
 
 export const SplashBox = styled.div`
+  position: relative;
+  margin: 0 auto;
+  max-width: 480px;
   width: 100vw;
   height: 100vh;
   background-color: ${({ theme }) => theme.mainOrange};

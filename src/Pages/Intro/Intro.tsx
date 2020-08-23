@@ -31,6 +31,8 @@ const Intro = () => {
 export default Intro;
 
 const IntroBox = styled.div`
+  margin: 0 auto;
+  max-width: 480px;
   width: 100vw;
   height: 100vh;
   padding: 0 21px;

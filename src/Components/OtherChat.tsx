@@ -14,9 +14,13 @@ type chatProps = {
 const OtherChat = ({ children, isMain, img }: chatProps) => {
   return (
     <MessageBox isMain={isMain}>
-      <img alt="msg_before" src={isMain ? msgBeforeMain : msgBefore} />
+      {children && (
+        <img alt="msg_before" src={isMain ? msgBeforeMain : msgBefore} />
+      )}
       <p>{children}</p>
-      <img alt="msg_after" src={isMain ? msgAfterMain : msgAfter} />
+      {children && (
+        <img alt="msg_after" src={isMain ? msgAfterMain : msgAfter} />
+      )}
     </MessageBox>
   );
 };
@@ -24,7 +28,10 @@ const OtherChat = ({ children, isMain, img }: chatProps) => {
 export default OtherChat;
 
 const MessageBox = styled.article`
-  background-color: ${(props) =>
-    props.isMain ? props.theme.lightGray : "white"};
+  p {
+    background-color: ${(props) =>
+      props.isMain ? props.theme.lightGray : "white"};
+  }
+
   ${(props) => props.theme.MessageBox}
 `;
