@@ -3,11 +3,12 @@ import styled from "styled-components";
 import SplashLogo from "./SplashLogo";
 
 const Splash = ({ history }) => {
+  console.log(history);
   useEffect(() => {
     setTimeout(() => {
       history.push("/intro");
     }, 1500);
-  }, []);
+  }, [history]);
   return (
     <SplashBox>
       <SplashLogo />
@@ -15,7 +16,7 @@ const Splash = ({ history }) => {
   );
 };
 
-export default Splash;
+export default React.memo(Splash);
 
 export const SplashBox = styled.div`
   position: relative;

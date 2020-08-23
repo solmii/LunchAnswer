@@ -4,22 +4,22 @@ import IntroLogo from "./IntroLogo";
 import IntroChatField from "./IntroChatField";
 import Button from "Components/Button";
 
-const Intro = () => {
+const Intro = ({ history }) => {
   return (
     <IntroBox>
       <IntroLogo />
       <IntroChatField />
       <ButtonWrap>
-        <Button color="yellow">
+        <Button color="yellow" eventFunc={() => history.push("/test")}>
           <div>
-            <span className="bold">점심</span> 메뉴 <br />
+            <b>점심</b> 메뉴 <br />
             테스트
           </div>
         </Button>
-        <Button color="white">
+        <Button color="white" eventFunc={() => history.push("/random")}>
           <div>
             귀찮을 땐 <br />
-            <span className="bold">랜덤 </span>
+            <b>랜덤 </b>
             메뉴
           </div>
         </Button>
@@ -28,7 +28,7 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default React.memo(Intro);
 
 const IntroBox = styled.div`
   margin: 0 auto;

@@ -4,6 +4,7 @@ import msgBefore from "assets/msg_before_w.png";
 import msgAfter from "assets/msg_after_w.png";
 import msgBeforeMain from "assets/msg_before.png";
 import msgAfterMain from "assets/msg_after.png";
+import ChatKeyFrames from "Styles/ChatKeyFrames";
 
 type chatProps = {
   children: React.ReactChild; // props로 받아서 출력할 message
@@ -25,7 +26,7 @@ const OtherChat = ({ children, isMain, img }: chatProps) => {
   );
 };
 
-export default OtherChat;
+export default React.memo(OtherChat);
 
 const MessageBox = styled.article`
   p {
@@ -33,5 +34,6 @@ const MessageBox = styled.article`
       props.isMain ? props.theme.lightGray : "white"};
   }
 
-  ${(props) => props.theme.MessageBox}
+  ${(props) => props.theme.MessageBox};
+  animation: ${ChatKeyFrames} 0.8s linear 0s;
 `;
