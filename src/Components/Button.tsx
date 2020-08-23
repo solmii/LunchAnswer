@@ -4,13 +4,18 @@ import styled from "styled-components";
 type ButtonProps = {
   color: string;
   children: React.ReactChild;
+  eventFunc: any;
 };
 
-const Button = ({ color, children }: ButtonProps) => {
-  return <ButtonBox color={color}>{children}</ButtonBox>;
+const Button = ({ color, children, eventFunc }: ButtonProps) => {
+  return (
+    <ButtonBox color={color} onClick={eventFunc}>
+      {children}
+    </ButtonBox>
+  );
 };
 
-export default Button;
+export default React.memo(Button);
 
 const ButtonBox = styled.button`
   outline: none;
@@ -18,14 +23,20 @@ const ButtonBox = styled.button`
   width: 100%;
   padding: 13px 0;
   border-radius: 8px;
-  ${({ color, theme }) => handleColorType(color, theme)};
 
   * {
     font-size: 21.5px;
+    font-family: ${({ theme }) => theme.mainFontRegular};
+  }
+  b {
+    font-family: ${({ theme }) => theme.mainFontBold};
   }
 
-  .bold {
-    font-weight: bold;
+  ${({ color, theme }) => handleColorType(color, theme)}; /* 컬러 체킹 */
+
+  &:active {
+    transform: translateY(7px);
+    box-shadow: 0px 0px;
   }
 `;
 
