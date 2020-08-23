@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 type ButtonProps = {
@@ -18,14 +18,19 @@ const ButtonBox = styled.button`
   width: 100%;
   padding: 13px 0;
   border-radius: 8px;
-  ${({ color, theme }) => handleColorType(color, theme)};
 
   * {
     font-size: 21.5px;
   }
-
   .bold {
     font-weight: bold;
+  }
+
+  ${({ color, theme }) => handleColorType(color, theme)}; /* 컬러 체킹 */
+
+  &:active {
+    transform: translateY(7px);
+    box-shadow: 0px 0px;
   }
 `;
 

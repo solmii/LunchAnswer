@@ -1,4 +1,4 @@
-import React, { ReactChild } from "react";
+import React from "react";
 import styled from "styled-components";
 import msgBefore from "assets/msg_before_w.png";
 import msgAfter from "assets/msg_after_w.png";
@@ -26,6 +26,5 @@ export default OtherChat;
 const MessageBox = styled.article`
   background-color: ${(props) =>
     props.isMain ? props.theme.lightGray : "white"};
-
   ${(props) => props.theme.MessageBox}
 `;
