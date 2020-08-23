@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from 'Styles/GlobalStyle';
 import theme from './Styles/theme';
 import Splash from 'Pages/Splash';
-import Test from 'Pages/TestForm';
+import TestForm from 'Pages/TestForm';
 
 const Routes = () => {
 	return (
@@ -13,7 +13,7 @@ const Routes = () => {
 			<ThemeProvider theme={theme}>
 				<Switch>
 					<Route exact path='/splash' component={Splash} />
-					<Route exact path='/test' component={Test} />
+					<Route exact path='/test' component={TestForm} />
 					<Redirect from='*' to='/' />
 				</Switch>
 			</ThemeProvider>

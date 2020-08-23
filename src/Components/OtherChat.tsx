@@ -6,17 +6,17 @@ import msgBeforeMain from 'assets/msg_before.png';
 import msgAfterMain from 'assets/msg_after.png';
 
 type chatProps = {
-	message: string; // props로 받아서 출력할 message
-	isMain?: boolean; // main page에서 사용할경우 props로 true값을 넘겨주면 알아서 스타일 변경
-	img?: string; // 결과창에서 사용할 image
+	message: string;
+	isMain?: boolean;
+	img?: string;
 };
 
 const OtherChat = ({ message, isMain, img }: chatProps) => {
 	return (
-		<MessageBox>
-			<img alt='msg_before' src={isMain ? msgBeforeMain : msgBefore} />
-			<p className={isMain ? 'mainChatText' : 'otherChatText'}>{message}</p>
-			<img alt='msg_after' src={isMain ? msgAfterMain : msgAfter} />
+		<MessageBox isMain={isMain}>
+			{message && <img alt='msg_before' src={isMain ? msgBeforeMain : msgBefore} />}
+			<p>{message}</p>
+			{message && <img alt='msg_after' src={isMain ? msgAfterMain : msgAfter} />}
 		</MessageBox>
 	);
 };
@@ -24,12 +24,8 @@ const OtherChat = ({ message, isMain, img }: chatProps) => {
 export default OtherChat;
 
 const MessageBox = styled.article`
-	.otherChatText {
-		background-color: white;
-	}
-
-	.mainChatText {
-		background-color: ${(props) => props.theme.lightGray};
+	p {
+		background-color: ${(props) => (props.isMain ? props.theme.lightGray : 'white')};
 	}
 
 	${(props) => props.theme.MessageBox}

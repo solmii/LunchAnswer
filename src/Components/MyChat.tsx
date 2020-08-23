@@ -23,5 +23,6 @@ const MessageBox = styled.article`
 	p {
 		background-color: ${(props) => props.theme.mainYellow};
 	}
+
 	${(props) => props.theme.MessageBox}
 `;
