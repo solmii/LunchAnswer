@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
-import { animateScroll } from "react-scroll";
+// import axios from "axios";
 import styled from "styled-components";
 import MyChat from "Components/MyChat";
 import OtherChat from "Components/OtherChat";
@@ -13,7 +12,7 @@ const TestForm = ({ history }) => {
   const [mouseAction, setMouseAction] = useState<boolean>(true);
   const [questionCount, setQuestionCount] = useState<number>(1);
   const [chatList, setChatList] = useState<string[] | any>([]);
-  const [userResult, serUserResult] = useState<boolean[] | any>([]);
+  const [userResult, setUserResult] = useState<boolean[] | any>([]);
 
   // 진행도 증가 함수
   const increaseProgress = () => setQuestionCount(questionCount + 1);
@@ -41,30 +40,21 @@ const TestForm = ({ history }) => {
   ): void => {
     if (type !== undefined) {
       addChatList(answer);
-      serUserResult([...userResult, type]);
+      setUserResult([...userResult, type]);
     } else {
       addChatList(categoryChatList[index], true);
-      serUserResult([...userResult, answer]);
+      setUserResult([...userResult, answer]);
     }
     increaseProgress();
   };
 
-  // 스크롤이 늘어나도 채팅창 하단에 위치 고정
-  const scrollToBottom = () => {
-    animateScroll.scrollToBottom({
-      containerId: "chatForm-holder",
-    });
+  const bottomRef = useRef();
+  const scrollToBottom = (bottomRef) => {
+    bottomRef.current!.scrollTop = bottomRef.current!.scrollHeight;
   };
-
   useEffect(() => {
-    scrollToBottom();
-  }, [chatList.length]);
-
-  // const chatRef = useRef<HTMLUListElement>(null);
-
-  // useEffect(() => {
-  // 	chatRef.current!.scrollTop = chatRef.current!.scrollHeight;
-  // }, [chatList]);
+    scrollToBottom(bottomRef);
+  }, [chatList]);
 
   const sendResultPage = async () => {
     try {
@@ -85,7 +75,12 @@ const TestForm = ({ history }) => {
 
   return (
     <TestSection>
-      {questionCount > 7 ? (
+      {questionCount < 7 ? (
+        <QuestionNav>
+          <h1>Q{questionCount}</h1>
+          <p>{questionCount}/7</p>
+        </QuestionNav>
+      ) : (
         <ResultNav>
           <img
             alt="go_home"
@@ -93,14 +88,9 @@ const TestForm = ({ history }) => {
             onClick={() => history.push("/intro")}
           />
         </ResultNav>
-      ) : (
-        <QuestionNav>
-          <h1>Q{questionCount}</h1>
-          <p>{questionCount}/7</p>
-        </QuestionNav>
       )}
 
-      <ChatForm questionCount={questionCount}>
+      <ChatForm questionCount={questionCount} ref={bottomRef}>
         <ul id="chatForm-holder">
           <li>
             <OtherChat>종류는 뭘로 할래?</OtherChat>
@@ -204,10 +194,11 @@ const ResultNav = styled.nav`
 const ChatForm = styled.div`
   height: ${(props) => (props.questionCount === 1 ? "12.188em" : "30em")};
   margin: 1.25em;
-  padding: 1.25em 0;
+  padding: 2.625em 0;
   border-radius: 1.875em;
   background-color: ${(props) => props.theme.lightGray};
   overflow: scroll;
+  scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
     display: none;
@@ -220,7 +211,7 @@ const ChatForm = styled.div`
 
     li {
       display: flex;
-      padding: 1.375em 1em 0;
+      padding: 0 1em 1.375em;
 
       &:nth-of-type(even) {
         align-self: flex-end;
