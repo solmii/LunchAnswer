@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import Button from 'Components/Button';
 import { categoryList } from './testData';
 
 type categoryProps = {
@@ -13,9 +13,9 @@ const CategoryButtonForm = ({ mouseAction, handleAnswerBtn }: categoryProps) => 
 			{categoryList.map((category, idx) => {
 				return (
 					<li>
-						<Test mouseAction={mouseAction} onClick={() => handleAnswerBtn(category, idx)}>
-							{category}
-						</Test>
+						<Button color='gray-click' mouseAction={mouseAction} eventFunc={() => handleAnswerBtn(category, idx)}>
+							<div>{category}</div>
+						</Button>
 					</li>
 				);
 			})}
@@ -24,10 +24,3 @@ const CategoryButtonForm = ({ mouseAction, handleAnswerBtn }: categoryProps) => 
 };
 
 export default CategoryButtonForm;
-
-const Test = styled.button`
-	width: 100%;
-	padding: 20px;
-	cursor: ${(props) => (props.mouseAction ? 'pointer' : 'not-allowed')};
-	pointer-events: ${(props) => (props.mouseAction ? 'auto' : 'none')};
-`;

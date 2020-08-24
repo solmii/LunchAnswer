@@ -1,5 +1,4 @@
 export const questionList: string[] = [
-	'종류는 뭘로 할래?',
 	'고기 들어간거 어때?',
 	'매콤한건 어때?',
 	'혹시 면 땡겨?',
