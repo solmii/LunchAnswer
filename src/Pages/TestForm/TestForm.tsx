@@ -75,7 +75,7 @@ const TestForm = ({ history }) => {
 
   return (
     <TestSection>
-      {questionCount < 7 ? (
+      {questionCount < 8 ? (
         <QuestionNav>
           <h1>Q{questionCount}</h1>
           <p>{questionCount}/7</p>

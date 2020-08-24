@@ -7,6 +7,7 @@ import Button from "Components/Button";
 import sub_logo from "assets/sub_logo.svg";
 
 const ResultForm = ({ history }) => {
+  const chatListState = history.location.state.chatList;
   const [mouseAction, setMouseAction] = useState<boolean>(true);
   const [chatList, setChatList] = useState<string[] | any>([]);
   type Food = { food_name: string; img?: string; match?: number };
@@ -29,13 +30,12 @@ const ResultForm = ({ history }) => {
 
   useEffect(() => {
     getFoodResult();
-  }, []);
+    setChatList(chatListState);
+  }, [chatList, chatListState]);
 
-  useEffect(() => {
-    const chatList = history.location.state.chatList;
-    setChatList(chatList);
-    console.log("chatList : ", chatList);
-  }, [history.location.state.chatList]);
+  // useEffect(() => {
+  //   console.log("chatList : ", chatList);
+  // }, [chatList, history.location.state.chatList]);
 
   const filteredFoodList = foodResult.filter((_, idx) => idx < resultView + 1);
 
@@ -43,7 +43,7 @@ const ResultForm = ({ history }) => {
     console.log("filteredFoodList: ", filteredFoodList);
   }, [filteredFoodList]);
 
-  const bottomRef = useRef();
+  const bottomRef = useRef(null);
   const scrollToBottom = (bottomRef) => {
     console.log(bottomRef.current.scrollTop, bottomRef.current.scrollHeight);
     bottomRef.current.scrollTop = bottomRef.current.scrollHeight;
