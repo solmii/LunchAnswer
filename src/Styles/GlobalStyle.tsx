@@ -96,7 +96,9 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
     box-sizing: border-box;
   }
-
+  html{
+    scroll-behavior: smooth;
+  }
   body{
     font-family: "S-CoreDream-2ExtraLight", sans-serif;
   }
